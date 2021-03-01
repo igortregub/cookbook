@@ -1,0 +1,24 @@
+version: '3'
+services:
+
+  app:
+    build: src/main/docker/app
+    volumes:
+      - ./target/cookbook-1.0.0.jar:/app.jar:ro
+    environment:
+      - JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/cookbook
+      - SLEEP_TIME=5 # wait fot other services
+    ports:
+      - 8080:8080
+
+  postgresql:
+    image: postgres:12
+    # volumes:
+    #     - ./data/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=cookbook
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
