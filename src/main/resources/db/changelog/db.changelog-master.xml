@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet author="IgorTregub" id="init-schema">
+        <createTable tableName="recipe">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+
+            <column name="parent_id" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="text">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="created_date" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <addAutoIncrement
+                tableName="recipe"
+                columnName="id"
+        />
+
+        <addForeignKeyConstraint
+                constraintName="recipe_parent"
+                baseTableName="recipe"
+                baseColumnNames="parent_id"
+                referencedColumnNames="id"
+                referencedTableName="recipe"
+                onDelete="SET NULL"
+        />
+
+        <loadData
+                file="db/changelog/cookbook_public_recipe.csv"
+                separator=";"
+                tableName="recipe">
+            <column name="parent_id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="description" type="string"/>
+            <column name="created_date" type="datetime"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
