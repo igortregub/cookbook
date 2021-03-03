@@ -42,6 +42,7 @@ public class RecipeMapperTest {
         assertThat(dto.getDescription()).isEqualTo(recipe.getDescription());
         assertThat(dto.getCreatedDate()).isEqualTo(instant);
         assertThat(dto.getParent()).isEqualTo(recipe.getRecipeParent().getId());
+        assertThat(dto.getParentName()).isEqualTo(recipe.getRecipeParent().getName());
     }
 
     @Test

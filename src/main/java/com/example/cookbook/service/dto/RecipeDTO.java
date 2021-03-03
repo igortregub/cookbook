@@ -21,4 +21,5 @@ public class RecipeDTO implements Serializable {
     private Instant createdDate;
 
     private Long parent;
+    private String parentName;
 }

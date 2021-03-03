@@ -15,6 +15,7 @@ public class RecipeDTOTest {
         RecipeDTO recipeDTO1 = new RecipeDTO();
         recipeDTO1.setId(22L);
         recipeDTO1.setParent(11L);
+        recipeDTO1.setParentName("testName");
         recipeDTO1.setName("test");
         recipeDTO1.setDescription("test description...");
         recipeDTO1.setCreatedDate(instant);
@@ -22,6 +23,7 @@ public class RecipeDTOTest {
         RecipeDTO recipeDTO2 = new RecipeDTO();
         recipeDTO2.setId(recipeDTO1.getId());
         recipeDTO2.setParent(recipeDTO1.getParent());
+        recipeDTO2.setParentName(recipeDTO1.getParentName());
         recipeDTO2.setName(recipeDTO1.getName());
         recipeDTO2.setDescription(recipeDTO1.getDescription());
         recipeDTO2.setCreatedDate(instant);
