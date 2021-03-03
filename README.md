@@ -9,13 +9,12 @@ To build the final jar, run (tests are skipped to speed up the build):
 
 ## Run tests
 To test the project, run:
+
 ```
  docker run -it --rm --privileged=true -v /var/run/docker.sock:/var/run/docker.sock -v "$(pwd)":/app -w /app maven:3.6.3-jdk-11 mvn test
 ```
 
-
 ## Run
-
 To start the project, run:
 
 ```
