@@ -1,6 +1,6 @@
 import {Table} from "react-bootstrap";
 import {CardPanel, Pagination} from "react-materialize";
-import React from "react";
+import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 
 function Recipes(props) {
@@ -8,6 +8,10 @@ function Recipes(props) {
     const onSelect = (current) => {
         props.updateHundler(current - 1)
     }
+
+    useEffect(() => {
+        onSelect(0)
+    }, [])
 
     const recipes = props.recipes.map(recipe => (
         <tr key={recipe.id}>

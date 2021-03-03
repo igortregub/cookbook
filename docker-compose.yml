@@ -3,7 +3,6 @@ services:
 
   app:
     build: src/main/docker
-    image: igorukr/cookbook:latest
     volumes:
       - ./target/cookbook-1.0.0.jar:/app.jar:ro
     environment:
