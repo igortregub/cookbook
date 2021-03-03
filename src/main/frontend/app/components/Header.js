@@ -10,7 +10,7 @@ function Header() {
                 alignLinks="right"
                 brand={<a className="brand-logo" href="#">Cookbook</a>}
                 id="mobile-nav"
-                menuIcon={<></>}
+                menuIcon={<>Menu</>}
             >
                 <NavItem href="/">
                     <Link to="/">All recipes</Link>

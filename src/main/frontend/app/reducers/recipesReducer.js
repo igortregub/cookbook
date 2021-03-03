@@ -1,7 +1,10 @@
 import {
     GET_ALL_RECIPES,
     GET_RECIPE,
-    GET_RECIPE_CHILD, RECIPE_CREATED, RECIPE_SAVED
+    GET_RECIPE_CHILD_LOADING,
+    GET_RECIPE_CHILD,
+    RECIPE_CREATED,
+    RECIPE_SAVED
 } from '../actions/types'
 
 const initialState = {
@@ -68,6 +71,15 @@ export default function (state = initialState, action) {
                 ...state,
                 recipe: action.payload,
                 recipeUpdated: false,
+                parent: {
+                    id: action.payload.parent,
+                    name: action.payload.parentName
+                }
+            }
+        case GET_RECIPE_CHILD_LOADING:
+            return {
+                ...state,
+                recipeUpdated: false,
                 children: {
                     content: [],
                     pagination: {
@@ -75,10 +87,6 @@ export default function (state = initialState, action) {
                         totalPages: 0
                     }
                 },
-                parent: {
-                    id: action.payload.parent,
-                    name: action.payload.parentName
-                }
             }
         case GET_RECIPE_CHILD:
             return {

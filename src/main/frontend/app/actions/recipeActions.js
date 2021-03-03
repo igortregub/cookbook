@@ -2,7 +2,11 @@ import axios from 'axios'
 
 import {
     GET_ALL_RECIPES,
-    GET_RECIPE, GET_RECIPE_CHILD, RECIPE_CREATED, RECIPE_SAVED
+    GET_RECIPE,
+    GET_RECIPE_CHILD,
+    GET_RECIPE_CHILD_LOADING,
+    RECIPE_CREATED,
+    RECIPE_SAVED
 } from './types'
 
 export const getRecipes = (current = 0, size = 10) => dispatch => {
@@ -16,6 +20,8 @@ export const getRecipes = (current = 0, size = 10) => dispatch => {
 }
 
 export const getRecipeChild = (id, current = 0, size = 10) => dispatch => {
+    dispatch({type: GET_RECIPE_CHILD_LOADING})
+
     axios.get('/api/recipes/' + id + '/child?page=' + current + '&size=' + size + '&sort=name,ASC')
         .then(res => {
             dispatch({
