@@ -1,0 +1,13 @@
+
+.content.container {
+    margin-top: 20px;
+}
+
+header a.brand-logo {
+    padding-left: 20px;
+}
+
+.view-page a {
+    margin: 5px;
+    display: inline-block;
+}
