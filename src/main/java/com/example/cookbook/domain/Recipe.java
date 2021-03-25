@@ -22,7 +22,7 @@ public class Recipe implements Serializable {
     private Long id;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id", referencedColumnName = "id")
     private Recipe recipeParent;
 
